@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ndaraw Diack - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    .header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat bottom;
+        background-size: cover;
+        opacity: 0.3;
+    }
+
+    .header-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        font-weight: bold;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        animation: fadeInDown 1s;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+        opacity: 0.9;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s;
+    }
+
+    .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        animation: fadeIn 1.5s;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255,255,255,0.1);
+        padding: 8px 15px;
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateY(-2px);
+    }
+
+    nav {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        color: #1e3c72;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+        background: #1e3c72;
+        color: white;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    section {
+        margin-bottom: 60px;
+        animation: fadeInUp 1s;
+    }
+
+    h2 {
+        color: #1e3c72;
+        font-size: 2em;
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #1e3c72, #2a5298);
+    }
+
+    .profile-text {
+        font-size: 1.1em;
+        line-height: 1.8;
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        border-left: 4px solid #1e3c72;
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, #1e3c72, #2a5298);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+    }
+
+    .timeline-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -37px;
+        top: 25px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #1e3c72;
+        border: 3px solid white;
+        box-shadow: 0 0 0 3px #1e3c72;
+    }
+
+    .timeline-date {
+        color: #2a5298;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .timeline-title {
+        font-size: 1.3em;
+        color: #1e3c72;
+        margin-bottom: 5px;
+    }
+
+    .timeline-subtitle {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .timeline-content {
+        color: #555;
+    }
+
+    .timeline-content li {
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .skill-category {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+    }
+
+    .skill-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .skill-category h3 {
+        color: #1e3c72;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+    }
+
+    .skill-item {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        background: #f8f9fa;
+        border-radius: 5px;
+        border-left: 3px solid #2a5298;
+    }
+
+    .languages, .interests {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .language-card, .interest-card {
+        flex: 1;
+        min-width: 200px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+    }
+
+    .language-card:hover, .interest-card:hover {
+        transform: scale(1.05);
+    }
+
+    .certifications {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .cert-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #1e3c72;
+        transition: all 0.3s;
+    }
+
+    .cert-card:hover {
+        background: #1e3c72;
+        color: white;
+    }
+
+    footer {
+        background: #1e3c72;
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 { font-size: 2em; }
+        .subtitle { font-size: 1em; }
+        .nav-content { gap: 15px; }
+        .timeline { padding-left: 20px; }
+    }
+</style>
+
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="profile-img">
+                <img src="1745268438708.jpg" alt="" style="border-radius: 110px;">
+            </div>
+            <h1>Ndaraw Diack</h1>
+            <p class="subtitle">Superviseur Technique - Virologie</p>
+            <div class="contact-info">
+                <div class="contact-item">📍 Zac Mbao, Cité Finances / Dakar, Sénégal</div>
+                <div class="contact-item">📞 77 750 14 40</div>
+                <div class="contact-item">✉️ ndrien97@gmail.com</div>
+                
+                <div class="contact-item"><a href="https://www.linkedin.com/posts/ndaraw-diack-309483204_cdconelab-molecularbiology-qrtpcr-ugcPost-7389749581728854016-0RCR?utm_source=share&utm_medium=member_ios&rcm=ACoAAEneoIMBK3jFtFsrpe1q2JBvS6L3yecS36c" style="color: #fff;text-decoration: none;">💼 LinkedIn</a></div>
+            </div>
+        </div>
+    </header>
+
+
+<nav>
+    <div class="nav-content">
+        <a href="#profil" class="nav-link">Profil</a>
+        <a href="#formation" class="nav-link">Formation</a>
+        <a href="#experience" class="nav-link">Expérience</a>
+        <a href="#competences" class="nav-link">Compétences</a>
+        <a href="#langues" class="nav-link">Langues</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#interets" class="nav-link">Centres d'intérêt</a>
+    </div>
+</nav>
+
+<div class="container">
+    <section id="profil">
+        <h2>Profil Professionnel</h2>
+        <div class="profile-text">
+            Superviseur technique du Centre National de Référence OMS pour la grippe et les autres virus respiratoires au Pôle de virologie de l'Institut Pasteur de Dakar, avec plus de 4 ans d'expérience en biologie moléculaire, sérologie, culture cellulaire et isolement viral. Rigoureux, passionné et animé par un fort esprit scientifique, je suis engagé dans la surveillance épidémiologique et les enjeux de santé publique. Je souhaite orienter ma carrière vers la recherche et la production de vaccins.
+        </div>
+    </section>
+ <section id="formation">
+        <h2>Formation Académique</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2018 – 2021</div>
+                <div class="timeline-title">Licence en Génie Biologique</div>
+                <div class="timeline-subtitle">École Supérieure de Génie Industriel et Biologique (ESGIB), Dakar ,Sénégal</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2017 – 2018</div>
+                <div class="timeline-title">Licence 1 en Productions Animales</div>
+                <div class="timeline-subtitle">Université Gaston Berger, Saint-Louis ,Sénégal</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2016</div>
+                <div class="timeline-title">Baccalauréat en Sciences Expérimentales (Séries S2)</div>
+                <div class="timeline-subtitle">Lycée Seydina Issa Rohou Lahi, Dakar ,Sénégal</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Expérience Professionnelle</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Mars 2025 – Présent</div>
+                <div class="timeline-title">Superviseur Technique</div>
+                <div class="timeline-subtitle">Centre National de Référence OMS pour la Grippe et les autres virus respiratoires, Pole de Virologie - Institut Pasteur de Dakar, Sénégal</div>
+                <ul class="timeline-content">
+                    <li>Supervision des activités des différents plateaux techniques du CNR (biologie moléculaire, sérologie, culture cellulaire et isolement viral)</li>
+                    <li>Rédaction et mise à jour des SOPs</li>
+                    <li>Mise en œuvre des normes qualités ISO 9001 et ISO 15189</li>
+                    <li>Mise en place et suivi des Contrôles de Qualité Interne</li>
+                    <li>Pilotage du projet d’accréditation ISO 15189 pour le diagnostic moléculaire des virus grippaux A et B, du SARS-CoV-2 et du VRS</li>
+                    <li>Formation des techniciens et stagiaires du CNR</li>
+                    <li>Organisation et animation des réunions du CNR</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Janvier 2024 – Mars 2025</div>
+                <div class="timeline-title">Technicien Supérieur</div>
+                <div class="timeline-subtitle">Centre National de Référence OMS pour la Grippe et les autres virus respiratoires, Pôle de Virologie– Institut Pasteur de Dakar, Sénégal</div>
+                <ul class="timeline-content">
+                    <li>Diagnostic moléculaire des virus respiratoires par RT-PCR</li>
+                    <li> Extraction des acides nucléiques</li>
+                    <li>Culture cellulaire sur lignées MDCK et Vero E6</li>
+                    <li> Isolement viral (virus grippaux et SARS-CoV-2) sur cultures cellulaires</li>
+                    <li>Techniques sérologiques : ELISA, PRNT, titrage par hémagglutination, inhibition de l’hémagglutination (IHA)</li>
+                    <li> Gestion des données du CNR : saisie, envoi des rapports à l’OMS et au ministère de la Santé</li>
+                    <li> Participation au projet CERCOWA (tests de biologie moléculaire)</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Janvier 2021 – Décembre 2023</div>
+                <div class="timeline-title">Stagiaire</div>
+                <div class="timeline-subtitle">Pôle de Virologie - Institut Pasteur de Dakar</div>
+                <ul class="timeline-content">
+                    <li>Diagnostic moléculaire et sérologique du SARS-CoV-2</li>
+                    <li>Culture cellulaire</li>
+                    <li>Formations : normes ISO 9001, biosécurité</li>
+                    <li>Gestion des réactifs et consommables</li>
+                    <li> Missions de terrain : gestion de laboratoire pour les tests COVID-19 à Saint-Louis</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Octobre 2020 – Novembre 2020</div>
+                <div class="timeline-title">Stagiaire</div>
+                <div class="timeline-subtitle">Laboratoire de Biochimie-Hématologie, CHU de FANN, Dakar, Sénégal</div>
+                <ul class="timeline-content">
+                    <li> Projet de fin de cycle : dosage des paramètres biochimiques dans le suivi du diabète</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Février 2020</div>
+                <div class="timeline-title">Stagiaire en imprégnation</div>
+                <div class="timeline-subtitle">Institut de Recherche pour le Développement (IRD), Dakar, Sénégal</div>
+                <ul class="timeline-content">
+                    <li> Extraction d’ADN bactérien, PCR classique, RFLP</li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+
+   
+    <section id="competences">
+        <h2>Hard Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>🧬 Biologie Moléculaire</h3>
+                <div class="skill-item"> Extraction d’acides nucléiques (ARN/ADN)</div>
+                <div class="skill-item">PCR classique</div>
+                <div class="skill-item">RT-PCR (singleplex/multiplex)</div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🔬 Sérologie</h3>
+                <div class="skill-item">ELISA</div>
+                <div class="skill-item">Tests de séroneutralisation (PRNT)</div>
+                <div class="skill-item">titrage par hémagglutination et inhibition de l’hémagglutination</div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🦠 Culture Cellulaire</h3>
+                <div class="skill-item">Culture et entretien de lignées cellulaires</div>
+                <div class="skill-item"> isolement viral sur cultures cellulaires</div>
+                
+            </div>
+
+            <div class="skill-category">
+                <h3>✅ Qualité et biosécurité </h3>
+                <div class="skill-item">Mise en œuvre des normes ISO 9001 et ISO 15189</div>
+                <div class="skill-item">Rédaction de SOPs</div>
+                <div class="skill-item">manipulations en BSL-2</div>
+                <div class="skill-item">gestion des risques biologiques</div>
+                 
+            </div>
+
+            <div class="skill-category">
+                <h3>💻 Informatique et gestion de données </h3>
+                <div class="skill-item">Bonne maîtrise du pack OFFICE</div>
+                <div class="skill-item">Saisie des données de surveillance,</div>
+                <div class="skill-item"> Rédaction de rapports avec visuels</div>
+            </div>
+
+            
+
+            
+        </div>
+        <h2>Soft Skills</h2>
+        <div class="skills-grid">
+             <div class="skill-category">
+                
+                <div class="skill-item">Rigueur scientifique</div>
+                <div class="skill-item">Innovateur</div>
+                <div class="skill-item">Esprit d’équipe</div>
+                <div class="skill-item">Sens de l’organisation et des responsabilités</div>
+                <div class="skill-item">Soif d’apprendre</div>
+                <div class="skill-item">Grande capacité d’adaptation</div>
+                <div class="skill-item">Très bonnes qualités relationnelles</div>
+                <div class="skill-item">Sens du partage de connaissances</div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="langues">
+        <h2>Langues</h2>
+        <div class="languages">
+            <div class="language-card">
+                <h3>🇸🇳 Wolof</h3>
+                <p>Langue maternelle</p>
+            </div>
+            <div class="language-card">
+                <h3>🇫🇷 Français</h3>
+                <p>Courant</p>
+            </div>
+            <div class="language-card">
+                <h3>🇬🇧 Anglais</h3>
+                <p>Intermédiaire</p>
+            </div>
+            <div class="language-card">
+                <h3>🇪🇸 Espagnol</h3>
+                <p>Débutant</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications & Attestations</h2>
+        <div class="certifications">
+            <div class="cert-card">
+                <h3>🎓Attestation de formation en applications des systèmes CFX Opus 96 et CFX Maestro 2.3</h3>
+                <p>délivrée par MEDIFF</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓  Certificat Good Clinical Laboratory Practice</h3>
+                <p>délivrée par Pharmalys</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓 Certificat de participation au workshop « Life Sciences Research Workflow »</h3>
+                <p>délivrée par Zynome Scientific & Life Sciences Enterprises</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interets">
+        <h2>Centres d'Intérêt</h2>
+        <div class="interests">
+            <div class="interest-card">⚽ Football</div>
+            <div class="interest-card">🐓 Élevage de volailles</div>
+            <div class="interest-card">🌱 Micro-jardinage</div>
+            <div class="interest-card">📚 Documentation et lectures</div>
+            <div class="interest-card">🌍 Géopolitique</div>
+            <div class="interest-card">🎮 Jeux vidéo</div>
+            <div class="interest-card">💪 Musculation</div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 KalTechStudioDigital - Tous droits réservés</p>
+    <!--<p>Superviseur Technique en Virologie | Institut Pasteur de Dakar</p>-->
+</footer>
+
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.6s ease-out';
+        observer.observe(section);
+    });
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+        let current = '';
+        document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.style.background = '';
+            link.style.color = '#1e3c72';
+            if (link.getAttribute('href').slice(1) === current) {
+                link.style.background = '#1e3c72';
+                link.style.color = 'white';
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
